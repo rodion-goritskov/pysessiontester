@@ -6,6 +6,3 @@ def export_session_to_html(text_field):
     with open('session' + session_date, mode='w',
               encoding='utf-8') as export_file:
         export_file.write(text_field)
-
-
-export_session_to_html("lol")
