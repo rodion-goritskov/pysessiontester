@@ -2,6 +2,8 @@ import datetime
 
 
 def export_session_to_html(text_field):
+    '''Exports everything from text_field to html file
+    with current session day and time'''
     session_date = datetime.datetime.today()
     session_date_string = session_date.strftime('%d %b %Y %X')
     with open('Session at ' + session_date_string + '.html', mode='w',
