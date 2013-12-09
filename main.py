@@ -61,9 +61,7 @@ class Application(tk.Frame):
         while (self.current_time < self.time):
             time.sleep(1)
             self.current_time = self.current_time + 1
-            print("HELLO!")
             self.progress_bar["value"] = self.current_time
-            print(self.progress_bar["value"])
         self.start_button.config(state="normal")
         self.pause_button.config(state="disabled")
 
