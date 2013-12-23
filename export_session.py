@@ -15,10 +15,10 @@ def export_session_to_html(text_field):
         export_file.write('<h1>Session at ' + session_date_string + '</h1>\n')
         text_field = text_field.replace("\n", "</br>")
         for i in text_field:
-            if ((i == "*") & (pair == False)):
+            if ((i == "*") & (pair is False)):
                 res = res + '<text style="font-weight: bold;">'
                 pair = True
-            elif ((i == "*") & (pair == True)):
+            elif ((i == "*") & (pair is True)):
                 res = res + "</text>"
                 pair = False
             else:
