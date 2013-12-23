@@ -14,6 +14,8 @@ class Application(tk.Frame):
 
     def createWidgets(self):
         '''Maps window geometry with all fields and buttons'''
+        self.paused = False
+
         self.new_button = tk.Button(self, text="New session")
         self.new_button.grid(column=0, row=0)
 
@@ -40,7 +42,7 @@ class Application(tk.Frame):
                                       command=self.start_session)
         self.start_button.grid(column=4, row=4)
 
-        self.pause_button = tk.Button(self, text="Pause session")
+        self.pause_button = tk.Button(self, text="Pause session", command=self.pause_session)
         self.pause_button.config(state="disabled")
         self.pause_button.grid(column=4, row=5)
 
@@ -51,15 +53,20 @@ class Application(tk.Frame):
         if (self.time.isdigit()):
             self.start_button.config(state="disabled")
             self.pause_button.config(state="normal")
+            self.session_time_field.config(state="disabled")
 
             self.time = int(self.time)
             self.time = self.time * 60
 
-            self.progress_bar["value"] = 0
+            if self.paused == True:
+                self.current_time = self.saved_time
+                self.paused = False
+            else:
+                self.current_time = 0
+                self.progress_bar["value"] = 0
+                
             self.progress_bar["maximum"] = self.time
-
-            self.current_time = 0
-
+            
             self.t = threading.Thread(target=self.set_progress)
             self.t.daemon = True
             self.t.start()
@@ -69,7 +76,10 @@ class Application(tk.Frame):
         Label is used to countdown session time.
         Start button becomes inactive on start'''
         while (self.current_time < self.time):
-            time.sleep(1)
+            if self.paused == False:
+                time.sleep(1)
+            else:
+                break
             self.current_time = self.current_time + 1
             self.progress_bar["value"] = self.current_time
             self.time_to_go = self.time - self.current_time
@@ -78,11 +88,17 @@ class Application(tk.Frame):
             self.time_label_text.set(str(self.clock))
         self.start_button.config(state="normal")
         self.pause_button.config(state="disabled")
+        self.session_time_field.config(state="normal")
 
     def export_text(self):
         self.text = self.session_notes.get('1.0', 'end')
         if self.text:
             export_session.export_session_to_html(self.text)
+
+    def pause_session(self):
+        self.saved_time = self.current_time
+        self.paused = True
+        
 
 
 root = tk.Tk()
