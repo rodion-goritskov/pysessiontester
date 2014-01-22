@@ -16,7 +16,8 @@ class Application(tk.Frame):
         '''Maps window geometry with all fields and buttons'''
         self.paused = False
 
-        self.new_button = tk.Button(self, text="New session")
+        self.new_button = tk.Button(self, text="New session",
+                                    command=self.new_session)
         self.new_button.grid(column=0, row=0)
 
         self.export_button = tk.Button(self, text="Export session",
@@ -80,12 +81,13 @@ class Application(tk.Frame):
                 time.sleep(1)
             else:
                 break
-            self.current_time = self.current_time + 1
-            self.progress_bar["value"] = self.current_time
-            self.time_to_go = self.time - self.current_time
-            self.clock = datetime.time(minute=(self.time_to_go // 60),
-                                       second=(self.time_to_go % 60))
-            self.time_label_text.set(str(self.clock))
+            if self.paused is False:
+                self.current_time = self.current_time + 1
+                self.progress_bar["value"] = self.current_time
+                self.time_to_go = self.time - self.current_time
+                self.clock = datetime.time(minute=(self.time_to_go // 60),
+                                           second=(self.time_to_go % 60))
+                self.time_label_text.set(str(self.clock))
         self.start_button.config(state="normal")
         self.pause_button.config(state="disabled")
         self.session_time_field.config(state="normal")
@@ -98,6 +100,16 @@ class Application(tk.Frame):
     def pause_session(self):
         self.saved_time = self.current_time
         self.paused = True
+
+    def new_session(self):
+        self.paused = True
+        self.saved_time = 0
+        self.pause_button.config(state="disabled")
+        self.progress_bar["value"] = 0
+        self.time_label_text.set("")
+        self.session_time.set("")
+        self.session_notes.delete('1.0', 'end')
+
 
 root = tk.Tk()
 app = Application(master=root)
