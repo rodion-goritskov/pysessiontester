@@ -1,7 +1,7 @@
 import datetime
 import os
 
-EXPORT_PATH = os.environ["HOME"] + "/Документы/Проекты/Izumrud/Тестовые сессии/"
+EXPORT_PATH = os.environ["HOME"]
 
 
 def export_session_to_html(text_field):
@@ -11,7 +11,7 @@ def export_session_to_html(text_field):
     pair = False
     session_date = datetime.datetime.today()
     session_date_string = session_date.strftime('%d %b %Y %X')
-    with open(EXPORT_PATH + 'Session at ' + session_date_string + '.html',
+    with open(EXPORT_PATH + '/Session at ' + session_date_string + '.html',
               mode='w',
               encoding='utf-8') as export_file:
         export_file.write(

@@ -16,12 +16,12 @@ class Application(tk.Frame):
         '''Maps window geometry with all fields and buttons'''
         self.paused = False
 
-        self.new_button = tk.Button(self, text="New session",
-                                    command=self.new_session)
+        self.new_button = tk.ttk.Button(self, text="New session",
+                                        command=self.new_session)
         self.new_button.grid(column=0, row=0)
 
-        self.export_button = tk.Button(self, text="Export session",
-                                       command=self.export_text)
+        self.export_button = tk.ttk.Button(self, text="Export session",
+                                           command=self.export_text)
         self.export_button.grid(column=1, row=0)
 
         self.session_notes = tk.Text(self)
@@ -39,12 +39,12 @@ class Application(tk.Frame):
         self.time_label = tk.ttk.Label(self, textvariable=self.time_label_text)
         self.time_label.grid(column=3, row=4)
 
-        self.start_button = tk.Button(self, text="Start session",
-                                      command=self.start_session)
+        self.start_button = tk.ttk.Button(self, text="Start session",
+                                          command=self.start_session)
         self.start_button.grid(column=4, row=4)
 
-        self.pause_button = tk.Button(self, text="Pause session",
-                                      command=self.pause_session)
+        self.pause_button = tk.ttk.Button(self, text="Pause session",
+                                          command=self.pause_session)
         self.pause_button.config(state="disabled")
         self.pause_button.grid(column=4, row=5)
 
