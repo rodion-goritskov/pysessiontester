@@ -47,6 +47,7 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
 
     def new_session(self):
         self.progressBar.setValue(0)
+        self.progressBar.setFormat("Session progress")
         self.sessionStartButton.setText("Start session")
         self.current_time = 0
         self.isPaused = True
