@@ -1,5 +1,5 @@
 import sys
-from PyQt4.QtGui import QApplication, QMainWindow
+from PyQt4.QtGui import QApplication, QMainWindow,QSystemTrayIcon,QIcon
 from PyQt4 import QtCore
 from interface import Ui_MainAppWindow
 from export_session import *
@@ -11,6 +11,7 @@ import time
 class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
 
     progress_bar_change = QtCore.pyqtSignal()
+    session_end = QtCore.pyqtSignal()
 
     def __init__(self):
         QMainWindow.__init__(self)
@@ -20,10 +21,16 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
         self.isRIP = False
         self.current_time = 0
 
+        self.tray_icon = QSystemTrayIcon(QIcon("trayicon.xpm"))
+        self.tray_icon.show()
+        self.session_end.connect(self.session_end_message)
+
         self.setupUi(self)
         self.sessionStartButton.clicked.connect(self.start_session)
         self.newSessionButton.clicked.connect(self.new_session)
         self.exportSessionButton.clicked.connect(self.export_session)
+        self.tray_icon.activated.connect(self.maximize_window)
+
         self.progressBar.setTextVisible(True)
         self.progressBar.setFormat("Session progress")
 
@@ -60,6 +67,13 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
         self.progressBar.setValue(self.current_time)
         self.progressBar.setFormat("Time left:" + str(datetime.timedelta(seconds=self.time_to_go)))
 
+    def session_end_message(self):
+        self.tray_icon.showMessage("Session is over!","Session time is over")
+        self.sessionStartButton.setText("Start session")
+        self.progressBar.setFormat("Session is over!")
+        self.isPaused = True
+        self.isRIP = True
+
     def set_progress(self):
         while (self.current_time < self.session_time):
             if self.isPaused is False:
@@ -71,13 +85,18 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
                 self.progress_bar_change.emit()
                 self.time_to_go = self.session_time - self.current_time
         if self.current_time == self.session_time:
-            self.sessionStartButton.setText("Start session")
-            self.isPaused = True
-            self.isRIP = True
+            self.session_end.emit()
+            
 
     def __count_session_time(self, time_string):
         self.result_date = time_string.split(":")
         return (int(self.result_date[0])*3600) + (int(self.result_date[1])*60) + int(self.result_date[2])
+
+    def maximize_window(self,reason):
+        if self.isHidden() is False:
+            self.hide()
+        elif self.isHidden() is True:
+            self.show()
 
 
 app = QApplication(sys.argv)
