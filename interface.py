@@ -86,7 +86,7 @@ class Ui_MainAppWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainAppWindow)
 
     def retranslateUi(self, MainAppWindow):
-        MainAppWindow.setWindowTitle(_translate("MainAppWindow", "MainWindow", None))
+        MainAppWindow.setWindowTitle(_translate("MainAppWindow", "PySessionTester", None))
         self.newSessionButton.setText(_translate("MainAppWindow", "New session", None))
         self.exportSessionButton.setText(_translate("MainAppWindow", "Export session", None))
         self.sessionTimeField.setDisplayFormat(_translate("MainAppWindow", "hh:mm:ss", None))
