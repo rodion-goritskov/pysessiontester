@@ -10,8 +10,14 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>593</height>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="maximumSize">
    <size>
@@ -30,9 +36,9 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
-      <width>801</width>
+      <width>781</width>
       <height>31</height>
      </rect>
     </property>
@@ -52,17 +58,18 @@
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>Settings</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="text">
+        <string>Take screenshot</string>
        </property>
-      </spacer>
+      </widget>
      </item>
      <item>
       <widget class="QTimeEdit" name="sessionTimeField">
@@ -76,9 +83,9 @@
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>-1</x>
+      <x>9</x>
       <y>29</y>
-      <width>801</width>
+      <width>781</width>
       <height>541</height>
      </rect>
     </property>
@@ -86,45 +93,14 @@
      <item>
       <widget class="QTextEdit" name="textEdit"/>
      </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="text">
-          <string>PushButton</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="text">
-          <string>PushButton</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>570</y>
-      <width>801</width>
+      <width>781</width>
       <height>31</height>
      </rect>
     </property>
