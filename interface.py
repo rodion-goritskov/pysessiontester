@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'untitled.ui'
 #
-# Created: Mon Mar 10 01:23:06 2014
-#      by: PyQt4 UI code generator 4.10.3
+# Created: Thu Mar 27 23:12:35 2014
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,8 +26,12 @@ except AttributeError:
 class Ui_MainAppWindow(object):
     def setupUi(self, MainAppWindow):
         MainAppWindow.setObjectName(_fromUtf8("MainAppWindow"))
-        MainAppWindow.resize(800, 600)
+        MainAppWindow.setWindowModality(QtCore.Qt.ApplicationModal)
+        MainAppWindow.resize(800, 593)
         MainAppWindow.setMaximumSize(QtCore.QSize(800, 600))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("trayicon.xpm")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainAppWindow.setWindowIcon(icon)
         self.centralwidget = QtGui.QWidget(MainAppWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.horizontalLayoutWidget = QtGui.QWidget(self.centralwidget)

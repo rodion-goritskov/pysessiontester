@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>MainAppWindow</class>
  <widget class="QMainWindow" name="MainAppWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>593</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -17,7 +20,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PySessionTester</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>trayicon.xpm</normaloff>trayicon.xpm</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
