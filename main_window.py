@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'untitled.ui'
+# Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created: Thu Mar 27 23:24:40 2014
+# Created: Sun Mar 30 00:36:54 2014
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -47,9 +47,9 @@ class Ui_MainAppWindow(object):
         self.exportSessionButton = QtGui.QPushButton(self.horizontalLayoutWidget)
         self.exportSessionButton.setObjectName(_fromUtf8("exportSessionButton"))
         self.horizontalLayout.addWidget(self.exportSessionButton)
-        self.pushButton_3 = QtGui.QPushButton(self.horizontalLayoutWidget)
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        self.horizontalLayout.addWidget(self.pushButton_3)
+        self.settingsButton = QtGui.QPushButton(self.horizontalLayoutWidget)
+        self.settingsButton.setObjectName(_fromUtf8("settingsButton"))
+        self.horizontalLayout.addWidget(self.settingsButton)
         self.pushButton_4 = QtGui.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
         self.horizontalLayout.addWidget(self.pushButton_4)
@@ -87,7 +87,7 @@ class Ui_MainAppWindow(object):
         MainAppWindow.setWindowTitle(_translate("MainAppWindow", "PySessionTester", None))
         self.newSessionButton.setText(_translate("MainAppWindow", "New session", None))
         self.exportSessionButton.setText(_translate("MainAppWindow", "Export session", None))
-        self.pushButton_3.setText(_translate("MainAppWindow", "Settings", None))
+        self.settingsButton.setText(_translate("MainAppWindow", "Settings", None))
         self.pushButton_4.setText(_translate("MainAppWindow", "Take screenshot", None))
         self.sessionTimeField.setDisplayFormat(_translate("MainAppWindow", "hh:mm:ss", None))
         self.sessionStartButton.setText(_translate("MainAppWindow", "Start session", None))

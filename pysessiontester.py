@@ -1,11 +1,12 @@
 import sys
 from PyQt4.QtGui import QApplication, QMainWindow, QSystemTrayIcon, QIcon
 from PyQt4 import QtCore
-from interface import Ui_MainAppWindow
+from main_window import Ui_MainAppWindow
 from export_session import *
 import datetime
 import threading
 import time
+from settings import SettingsWindow
 
 
 class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
@@ -29,6 +30,7 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
         self.sessionStartButton.clicked.connect(self.start_session)
         self.newSessionButton.clicked.connect(self.new_session)
         self.exportSessionButton.clicked.connect(self.export_session)
+        self.settingsButton.clicked.connect(self.open_settings)
         self.tray_icon.activated.connect(self.maximize_window)
 
         self.progressBar.setTextVisible(True)
@@ -99,6 +101,10 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
             self.hide()
         elif self.isHidden() is True:
             self.show()
+
+    def open_settings(self):
+        self.settings = SettingsWindow(self)
+        self.settings.show()
 
 
 app = QApplication(sys.argv)
