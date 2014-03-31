@@ -1,5 +1,4 @@
 import datetime
-import os
 from config_utils import SessionConfig
 
 
