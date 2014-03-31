@@ -1,12 +1,13 @@
 import datetime
 import os
-
-EXPORT_PATH = os.environ["HOME"]
+from config_utils import SessionConfig
 
 
 def export_session_to_html(text_field):
     '''Exports everything from text_field to html file
     with current session day and time'''
+    settings_file = SessionConfig('export.ini')
+    EXPORT_PATH = settings_file.read_config()
     res = ""
     pair = False
     session_date = datetime.datetime.today()
