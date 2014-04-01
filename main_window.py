@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_MainAppWindow(object):
     def setupUi(self, MainAppWindow):
         MainAppWindow.setObjectName(_fromUtf8("MainAppWindow"))
-        MainAppWindow.setWindowModality(QtCore.Qt.ApplicationModal)
+        #MainAppWindow.setWindowModality(QtCore.Qt.ApplicationModal)
         MainAppWindow.resize(800, 600)
         MainAppWindow.setMinimumSize(QtCore.QSize(800, 600))
         MainAppWindow.setMaximumSize(QtCore.QSize(800, 600))

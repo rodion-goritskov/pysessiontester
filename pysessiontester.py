@@ -23,6 +23,7 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
         self.current_time = 0
 
         self.tray_icon = QSystemTrayIcon(QIcon("trayicon.xpm"))
+        self.tray_icon.activated.connect(self.maximize_window)
         self.tray_icon.show()
         self.session_end.connect(self.session_end_message)
 
@@ -31,7 +32,6 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
         self.newSessionButton.clicked.connect(self.new_session)
         self.exportSessionButton.clicked.connect(self.export_session)
         self.settingsButton.clicked.connect(self.open_settings)
-        self.tray_icon.activated.connect(self.maximize_window)
 
         self.progressBar.setTextVisible(True)
         self.progressBar.setFormat("Session progress")
@@ -96,7 +96,7 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
         self.result_date = time_string.split(":")
         return (int(self.result_date[0])*3600) + (int(self.result_date[1])*60) + int(self.result_date[2])
 
-    def maximize_window(self, reason):
+    def maximize_window(self):
         if self.isHidden() is False:
             self.hide()
         elif self.isHidden() is True:
