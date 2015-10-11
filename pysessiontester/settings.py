@@ -1,3 +1,4 @@
+import os.path
 from PyQt4.QtGui import QDialog, QFileDialog
 from pysessiontester.ui.settings_window import Ui_optionsDialog
 
@@ -19,7 +20,7 @@ class SettingsWindow(QDialog, Ui_optionsDialog):
         self.file_dialog.setFileMode(QFileDialog.Directory)
         if (self.file_dialog.exec_()):
             result = self.file_dialog.selectedFiles()
-        self.export_directory = result[0]
+        self.export_directory = os.path.join(result[0],'')
         self.exportPath.setText(self.export_directory)
 
     def set_directory(self):

@@ -9,7 +9,7 @@ def export_session_to_html(text_field, session_config):
     session_date = datetime.datetime.today()
     session_date_string = session_date.strftime('%d %b %Y %X')
     
-    with open(export_path + '/Session at ' + session_date_string + '.html',
+    with open(export_path + 'Session at ' + session_date_string + '.html',
               mode='w',
               encoding='utf-8') as export_file:
         html = markdown.markdown(text_field, output_format = 'html4');

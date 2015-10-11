@@ -2,6 +2,8 @@ import sys
 import datetime
 import threading
 import time
+import os.path
+import getpass
 
 from PyQt4.QtGui import QApplication, QMainWindow, QSystemTrayIcon, QIcon
 from PyQt4 import QtCore
@@ -38,7 +40,7 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
 
         self.progressBar.setTextVisible(True)
         self.progressBar.setFormat("Session progress")
-        self.session_config = SessionConfig("resources/config.ini")
+        self.session_config = SessionConfig(os.path.join(os.path.expanduser('~'),'pysessiontester','config.ini'))
 
     def start_session(self):
         self.session_time = self.__count_session_time(
