@@ -1,18 +1,16 @@
 from PyQt4.QtGui import QDialog, QFileDialog
-from settings_window import Ui_optionsDialog
-from config_utils import SessionConfig
-
-EXPORT_PATH = ""
+from pysessiontester.ui.settings_window import Ui_optionsDialog
 
 
 class SettingsWindow(QDialog, Ui_optionsDialog):
     def __init__(self, parent):
         QDialog.__init__(self, parent)
         self.setupUi(self)
-        self.configfile = SessionConfig("export.ini")
-        global EXPORT_PATH
-        EXPORT_PATH = self.configfile.read_config()
-        self.exportPath.setText(EXPORT_PATH)
+        
+        self.config_file = parent.session_config
+        self.export_directory = self.config_file.read_config()
+        self.exportPath.setText(self.export_directory)
+        
         self.choosepathButton.clicked.connect(self.choose_directory)
         self.buttonBox.accepted.connect(self.set_directory)
 
@@ -20,10 +18,9 @@ class SettingsWindow(QDialog, Ui_optionsDialog):
         self.file_dialog = QFileDialog(self)
         self.file_dialog.setFileMode(QFileDialog.Directory)
         if (self.file_dialog.exec_()):
-            self.result = self.file_dialog.selectedFiles()
-        global EXPORT_PATH
-        EXPORT_PATH = self.result[0]
-        self.exportPath.setText(EXPORT_PATH)
+            result = self.file_dialog.selectedFiles()
+        self.export_directory = result[0]
+        self.exportPath.setText(self.export_directory)
 
     def set_directory(self):
-        self.configfile.write_config(self.exportPath.text())
+        self.config_file.write_config(self.export_directory)

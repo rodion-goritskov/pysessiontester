@@ -1,4 +1,5 @@
 import configparser
+import os.path
 
 
 class SessionConfig(configparser.ConfigParser):
@@ -7,6 +8,11 @@ class SessionConfig(configparser.ConfigParser):
         self.config_name = config_name
 
     def read_config(self):
+        if (os.path.isfile(self.config_name) is False):
+            self['EXPORT'] = {}
+            self['EXPORT']['EXPORT_PATH'] = '~/'
+            with open(self.config_name, 'w') as self.configfile:
+                self.write(self.configfile)
         self.read(self.config_name)
         return self['EXPORT']['EXPORT_PATH']
 
