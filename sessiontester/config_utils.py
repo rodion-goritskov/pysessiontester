@@ -1,6 +1,5 @@
 import configparser
 import os
-import getpass
 
 
 class SessionConfig(configparser.ConfigParser):
@@ -8,7 +7,7 @@ class SessionConfig(configparser.ConfigParser):
         configparser.ConfigParser.__init__(self)
         self.config_name = config_name
         if (os.path.isfile(self.config_name) is False):
-            default_folder = os.path.join(os.path.expanduser('~'), 'pysessiontester','')
+            default_folder = os.path.join(os.path.expanduser('~'), 'sessiontester','')
             if (os.path.isdir(default_folder) is False):
                 os.mkdir(default_folder)
             self['EXPORT'] = {}

@@ -1,6 +1,6 @@
 import os.path
 from PyQt4.QtGui import QDialog, QFileDialog
-from pysessiontester.ui.settings_window import Ui_optionsDialog
+from .ui.settings_window import Ui_optionsDialog
 
 
 class SettingsWindow(QDialog, Ui_optionsDialog):

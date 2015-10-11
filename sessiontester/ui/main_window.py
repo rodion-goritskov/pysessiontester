@@ -31,7 +31,7 @@ class Ui_MainAppWindow(object):
         MainAppWindow.setMinimumSize(QtCore.QSize(800, 600))
         MainAppWindow.setMaximumSize(QtCore.QSize(800, 600))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("resources/trayicon.xpm")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../resources/trayicon.xpm")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainAppWindow.setWindowIcon(icon)
         self.centralwidget = QtGui.QWidget(MainAppWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))

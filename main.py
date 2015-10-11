@@ -1,17 +1,18 @@
+#!/usr/bin/env python3
+
 import sys
 import datetime
 import threading
 import time
 import os.path
-import getpass
 
 from PyQt4.QtGui import QApplication, QMainWindow, QSystemTrayIcon, QIcon
 from PyQt4 import QtCore
 
-from pysessiontester.ui.main_window import Ui_MainAppWindow
-from pysessiontester.settings import SettingsWindow
-from pysessiontester.config_utils import SessionConfig
-import pysessiontester.export_session as export_session
+from sessiontester.ui.main_window import Ui_MainAppWindow
+from sessiontester.settings import SettingsWindow
+from sessiontester.config_utils import SessionConfig
+import sessiontester.export_session as export_session
 
 
 class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
@@ -27,7 +28,7 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
         self.isRIP = False
         self.current_time = 0
 
-        self.tray_icon = QSystemTrayIcon(QIcon("resources/trayicon.xpm"))
+        self.tray_icon = QSystemTrayIcon(QIcon("sessiontester/resources/trayicon.xpm"))
         self.tray_icon.activated.connect(self.maximize_window)
         self.tray_icon.show()
         self.session_end.connect(self.session_end_message)
@@ -40,7 +41,7 @@ class SessionTesterWindow(QMainWindow, Ui_MainAppWindow):
 
         self.progressBar.setTextVisible(True)
         self.progressBar.setFormat("Session progress")
-        self.session_config = SessionConfig(os.path.join(os.path.expanduser('~'),'pysessiontester','config.ini'))
+        self.session_config = SessionConfig(os.path.join(os.path.expanduser('~'),'sessiontester','config.ini'))
 
     def start_session(self):
         self.session_time = self.__count_session_time(
